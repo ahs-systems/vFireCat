@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using System.IO;
 
 namespace vFireCal
 {
     public partial class Form1 : Form
     {
+        private string ConnStr = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.dat;Uid=Admin;Pwd=;";
+
         public Form1()
         {
             InitializeComponent();
@@ -21,9 +24,9 @@ namespace vFireCal
         {
             using (OdbcConnection myConnection = new OdbcConnection())
             {
-                myConnection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.mdb;Uid=Admin;Pwd=;";
+                myConnection.ConnectionString = ConnStr;
                 string _sqlString = "SELECT DISTINCT vFireType, CatDesc as [Cat Desc], WhatsIncluded as [Whats Included], OneLiner as [One Liner] " +
-                        "FROM OneLiner WHERE INSTR(UCASE(vFireType), ?) > 0 OR " +
+                        "FROM vFireCat WHERE INSTR(UCASE(vFireType), ?) > 0 OR " +
                         "INSTR(UCASE(CatDesc), ?) > 0 OR INSTR(UCASE(WhatsIncluded), ?) > 0 OR INSTR(UCASE(OneLiner), ?) " +
                         "ORDER BY vFireType, CatDesc; ";
 
@@ -114,12 +117,23 @@ namespace vFireCal
             timer1.Enabled = true;
         }
 
+        private void CheckIfDbExist()
+        {
+            if (!File.Exists(Application.StartupPath + @"\vFireCat.dat"))
+            {
+                MessageBox.Show("Database is missing, program cannot continue.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+        }
+
         private void PopulateV_FireType()
         {
+            CheckIfDbExist();
+
             using (OdbcConnection myConnection = new OdbcConnection())
             {
-                myConnection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.mdb;Uid=Admin;Pwd=;";
-                string _sqlString = "SELECT DISTINCT vFireType FROM OneLiner ORDER BY vFireType";
+                myConnection.ConnectionString = ConnStr;
+                string _sqlString = "SELECT DISTINCT vFireType FROM vFireCat ORDER BY vFireType";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(_sqlString, myConnection))
                 {
@@ -135,10 +149,12 @@ namespace vFireCal
 
         private void PopulateCategoryDesc(string _vFireType)
         {
+            CheckIfDbExist();
+
             using (OdbcConnection myConnection = new OdbcConnection())
             {
-                myConnection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.mdb;Uid=Admin;Pwd=;";
-                string _sqlString = "SELECT DISTINCT CatDesc FROM OneLiner WHERE vFireType = ? ORDER BY CatDesc";
+                myConnection.ConnectionString = ConnStr;
+                string _sqlString = "SELECT DISTINCT CatDesc FROM vFireCat WHERE vFireType = ? ORDER BY CatDesc";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(_sqlString, myConnection))
                 {
@@ -154,10 +170,12 @@ namespace vFireCal
 
         private void PopulateWhatsIncluded(string _vFireType, string _CatDesc)
         {
+            CheckIfDbExist();
+
             using (OdbcConnection myConnection = new OdbcConnection())
             {
-                myConnection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.mdb;Uid=Admin;Pwd=;";
-                string _sqlString = "SELECT DISTINCT WhatsIncluded FROM OneLiner WHERE vFireType = ? AND CatDesc = ? ORDER BY WhatsIncluded";
+                myConnection.ConnectionString = ConnStr;
+                string _sqlString = "SELECT DISTINCT WhatsIncluded FROM vFireCat WHERE vFireType = ? AND CatDesc = ? ORDER BY WhatsIncluded";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(_sqlString, myConnection))
                 {
@@ -174,10 +192,12 @@ namespace vFireCal
 
         private void PopulateOneLiner(string _vFireType, string _CatDesc, string _whatsIncluded)
         {
+            CheckIfDbExist();
+
             using (OdbcConnection myConnection = new OdbcConnection())
             {
-                myConnection.ConnectionString = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.mdb;Uid=Admin;Pwd=;";
-                string _sqlString = "SELECT DISTINCT OneLiner FROM OneLiner WHERE vFireType = ? AND CatDesc = ? AND WhatsIncluded = ? ORDER BY OneLiner";
+                myConnection.ConnectionString = ConnStr;
+                string _sqlString = "SELECT DISTINCT OneLiner FROM vFireCat WHERE vFireType = ? AND CatDesc = ? AND WhatsIncluded = ? ORDER BY OneLiner";
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(_sqlString, myConnection))
                 {
@@ -227,6 +247,32 @@ namespace vFireCal
             lblMsg2.Text = "Category Description copied to clipboard!";
             timer1.Tag = "2";
             timer1.Enabled = true;
+        }
+
+        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count == 0)
+            {                
+                return;
+            }
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        mnuCopyFromList.Show(dataGridView1, new Point(e.X, e.Y));
+                    }
+                    break;
+            }
+        }
+
+        private void mnuCopyEmpNum_Click(object sender, EventArgs e)
+        {
+            btnCopyCatDesc1_Click(sender, e);
+        }
+
+        private void mnuCopyEmpName_Click(object sender, EventArgs e)
+        {
+            btnCopyOneLiner1_Click(sender, e);
         }
     }
 }
