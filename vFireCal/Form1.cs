@@ -216,6 +216,7 @@ namespace vFireCal
         private void Form1_Load(object sender, EventArgs e)
         {
             PopulateV_FireType();
+            btnSearch_Click(sender, e);
         }
 
         private void lbV_FireType_SelectedIndexChanged(object sender, EventArgs e)
