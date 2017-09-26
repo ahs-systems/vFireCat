@@ -275,5 +275,11 @@ namespace vFireCal
         {
             btnCopyOneLiner1_Click(sender, e);
         }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            txtSearchStr.Text = "";
+            btnSearch_Click(sender, e);
+        }
     }
 }

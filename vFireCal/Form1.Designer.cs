@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCopyCatDesc2 = new System.Windows.Forms.Button();
@@ -55,6 +55,7 @@
             this.mnuCopyFromList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuCopyEmpNum = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCopyEmpName = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClearSearch = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,7 +77,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(532, 7);
+            this.label1.Location = new System.Drawing.Point(478, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 17);
             this.label1.TabIndex = 21;
@@ -88,7 +89,7 @@
             this.btnCopyCatDesc2.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyCatDesc2.Image")));
             this.btnCopyCatDesc2.Location = new System.Drawing.Point(230, 218);
             this.btnCopyCatDesc2.Name = "btnCopyCatDesc2";
-            this.btnCopyCatDesc2.Size = new System.Drawing.Size(297, 39);
+            this.btnCopyCatDesc2.Size = new System.Drawing.Size(242, 48);
             this.btnCopyCatDesc2.TabIndex = 23;
             this.btnCopyCatDesc2.Text = "Copy Selected Category Description";
             this.btnCopyCatDesc2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -109,7 +110,7 @@
             // 
             this.btnCopyOneLiner2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyOneLiner2.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyOneLiner2.Image")));
-            this.btnCopyOneLiner2.Location = new System.Drawing.Point(795, 219);
+            this.btnCopyOneLiner2.Location = new System.Drawing.Point(795, 218);
             this.btnCopyOneLiner2.Name = "btnCopyOneLiner2";
             this.btnCopyOneLiner2.Size = new System.Drawing.Size(300, 39);
             this.btnCopyOneLiner2.TabIndex = 26;
@@ -125,14 +126,14 @@
             this.lbOneLiner.ItemHeight = 15;
             this.lbOneLiner.Location = new System.Drawing.Point(795, 28);
             this.lbOneLiner.Name = "lbOneLiner";
-            this.lbOneLiner.Size = new System.Drawing.Size(300, 184);
+            this.lbOneLiner.Size = new System.Drawing.Size(366, 184);
             this.lbOneLiner.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(789, 7);
+            this.label3.Location = new System.Drawing.Point(792, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 17);
             this.label3.TabIndex = 27;
@@ -150,11 +151,12 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1109, 302);
+            this.tabControl1.Size = new System.Drawing.Size(1175, 414);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnClearSearch);
             this.tabPage2.Controls.Add(this.lblMsg1);
             this.tabPage2.Controls.Add(this.btnCopyOneLiner1);
             this.tabPage2.Controls.Add(this.btnCopyCatDesc1);
@@ -164,7 +166,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1101, 270);
+            this.tabPage2.Size = new System.Drawing.Size(1167, 382);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Search";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -172,9 +174,9 @@
             // lblMsg1
             // 
             this.lblMsg1.ForeColor = System.Drawing.Color.Blue;
-            this.lblMsg1.Location = new System.Drawing.Point(291, 5);
+            this.lblMsg1.Location = new System.Drawing.Point(414, 8);
             this.lblMsg1.Name = "lblMsg1";
-            this.lblMsg1.Size = new System.Drawing.Size(292, 38);
+            this.lblMsg1.Size = new System.Drawing.Size(235, 38);
             this.lblMsg1.TabIndex = 47;
             this.lblMsg1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -183,7 +185,7 @@
             this.btnCopyOneLiner1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyOneLiner1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyOneLiner1.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyOneLiner1.Image")));
-            this.btnCopyOneLiner1.Location = new System.Drawing.Point(851, 8);
+            this.btnCopyOneLiner1.Location = new System.Drawing.Point(917, 8);
             this.btnCopyOneLiner1.Name = "btnCopyOneLiner1";
             this.btnCopyOneLiner1.Size = new System.Drawing.Size(244, 39);
             this.btnCopyOneLiner1.TabIndex = 46;
@@ -197,7 +199,7 @@
             this.btnCopyCatDesc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyCatDesc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCopyCatDesc1.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyCatDesc1.Image")));
-            this.btnCopyCatDesc1.Location = new System.Drawing.Point(589, 8);
+            this.btnCopyCatDesc1.Location = new System.Drawing.Point(655, 8);
             this.btnCopyCatDesc1.Name = "btnCopyCatDesc1";
             this.btnCopyCatDesc1.Size = new System.Drawing.Size(256, 39);
             this.btnCopyCatDesc1.TabIndex = 45;
@@ -218,10 +220,10 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.830189F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1090, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(1156, 325);
             this.dataGridView1.TabIndex = 44;
             this.dataGridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseUp);
             // 
@@ -262,7 +264,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1101, 270);
+            this.tabPage1.Size = new System.Drawing.Size(1167, 382);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "vFire Categories";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -283,7 +285,7 @@
             this.lbCatDesc.ItemHeight = 15;
             this.lbCatDesc.Location = new System.Drawing.Point(230, 28);
             this.lbCatDesc.Name = "lbCatDesc";
-            this.lbCatDesc.Size = new System.Drawing.Size(297, 184);
+            this.lbCatDesc.Size = new System.Drawing.Size(242, 184);
             this.lbCatDesc.TabIndex = 2;
             this.lbCatDesc.SelectedIndexChanged += new System.EventHandler(this.lbCatDesc_SelectedIndexChanged);
             // 
@@ -303,9 +305,9 @@
             this.lbWhatsIncluded.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWhatsIncluded.FormattingEnabled = true;
             this.lbWhatsIncluded.ItemHeight = 15;
-            this.lbWhatsIncluded.Location = new System.Drawing.Point(533, 28);
+            this.lbWhatsIncluded.Location = new System.Drawing.Point(480, 28);
             this.lbWhatsIncluded.Name = "lbWhatsIncluded";
-            this.lbWhatsIncluded.Size = new System.Drawing.Size(256, 184);
+            this.lbWhatsIncluded.Size = new System.Drawing.Size(309, 184);
             this.lbWhatsIncluded.TabIndex = 3;
             this.lbWhatsIncluded.SelectedIndexChanged += new System.EventHandler(this.lbWhatsIncluded_SelectedIndexChanged);
             // 
@@ -321,14 +323,14 @@
             this.mnuCopyEmpNum,
             this.mnuCopyEmpName});
             this.mnuCopyFromList.Name = "mnuCopyFromList";
-            this.mnuCopyFromList.Size = new System.Drawing.Size(283, 76);
+            this.mnuCopyFromList.Size = new System.Drawing.Size(282, 52);
             this.mnuCopyFromList.Text = "CopyFromList";
             // 
             // mnuCopyEmpNum
             // 
             this.mnuCopyEmpNum.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpNum.Image")));
             this.mnuCopyEmpNum.Name = "mnuCopyEmpNum";
-            this.mnuCopyEmpNum.Size = new System.Drawing.Size(282, 24);
+            this.mnuCopyEmpNum.Size = new System.Drawing.Size(281, 24);
             this.mnuCopyEmpNum.Text = "Copy Selected Category Description";
             this.mnuCopyEmpNum.Click += new System.EventHandler(this.mnuCopyEmpNum_Click);
             // 
@@ -336,17 +338,29 @@
             // 
             this.mnuCopyEmpName.Image = ((System.Drawing.Image)(resources.GetObject("mnuCopyEmpName.Image")));
             this.mnuCopyEmpName.Name = "mnuCopyEmpName";
-            this.mnuCopyEmpName.Size = new System.Drawing.Size(282, 24);
+            this.mnuCopyEmpName.Size = new System.Drawing.Size(281, 24);
             this.mnuCopyEmpName.Text = "Copy Selected One Liner";
             this.mnuCopyEmpName.Click += new System.EventHandler(this.mnuCopyEmpName_Click);
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.150944F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnClearSearch.Image")));
+            this.btnClearSearch.Location = new System.Drawing.Point(291, 8);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(117, 39);
+            this.btnClearSearch.TabIndex = 48;
+            this.btnClearSearch.Text = "Clear Search";
+            this.btnClearSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 314);
+            this.ClientSize = new System.Drawing.Size(1172, 426);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "vFire Categories";
@@ -388,6 +402,7 @@
         private System.Windows.Forms.ContextMenuStrip mnuCopyFromList;
         private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpNum;
         private System.Windows.Forms.ToolStripMenuItem mnuCopyEmpName;
+        private System.Windows.Forms.Button btnClearSearch;
     }
 }
 
