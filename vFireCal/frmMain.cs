@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.Odbc;
+using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace vFireCal
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         private string ConnStr = @"Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=" + Application.StartupPath + @"\vFireCat.dat;Uid=Admin;Pwd=;";
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -142,7 +138,7 @@ namespace vFireCal
                     DataTable t = new DataTable();
                     da.Fill(t);
                     lbV_FireType.DisplayMember = "vFireType";
-                    lbV_FireType.DataSource = t;                    
+                    lbV_FireType.DataSource = t;
                 }
             }
         }
@@ -158,7 +154,7 @@ namespace vFireCal
 
                 using (OdbcDataAdapter da = new OdbcDataAdapter(_sqlString, myConnection))
                 {
-                    da.SelectCommand.Parameters.AddWithValue("SearchStr", _vFireType);                  
+                    da.SelectCommand.Parameters.AddWithValue("SearchStr", _vFireType);
 
                     DataTable t = new DataTable();
                     da.Fill(t);
@@ -227,7 +223,7 @@ namespace vFireCal
         private void lbCatDesc_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateWhatsIncluded(lbV_FireType.GetItemText(lbV_FireType.SelectedValue), lbCatDesc.GetItemText(lbCatDesc.SelectedValue));
-        }        
+        }
 
         private void lbWhatsIncluded_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -253,7 +249,7 @@ namespace vFireCal
         private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
         {
             if (dataGridView1.SelectedCells.Count == 0)
-            {                
+            {
                 return;
             }
             switch (e.Button)
