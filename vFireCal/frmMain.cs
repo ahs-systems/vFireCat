@@ -21,7 +21,7 @@ namespace vFireCal
             using (OdbcConnection myConnection = new OdbcConnection())
             {
                 myConnection.ConnectionString = ConnStr;
-                string _sqlString = "SELECT DISTINCT vFireType, CatDesc as [Cat Desc], WhatsIncluded as [Whats Included], OneLiner as [One Liner] " +
+                string _sqlString = "SELECT DISTINCT vFireType, CatDesc as [Category Description], WhatsIncluded as [Whats Included], OneLiner as [One Liner] " +
                         "FROM vFireCat WHERE INSTR(UCASE(vFireType), ?) > 0 OR " +
                         "INSTR(UCASE(CatDesc), ?) > 0 OR INSTR(UCASE(WhatsIncluded), ?) > 0 OR INSTR(UCASE(OneLiner), ?) " +
                         "ORDER BY vFireType, CatDesc; ";
